@@ -1,6 +1,6 @@
 # Nativemq
 
-Open source MQTT 5 Server build using modern C++17
+Open source MQTT 5 Server build using modern C++17.
 
 > [!WARNING]
 Status : WIP, Experimental & Unstable.  
