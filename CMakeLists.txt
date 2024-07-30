@@ -17,12 +17,20 @@ file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
     ${CMAKE_CURRENT_SOURCE_DIR}/src/nativemq/*.s
 )
 
+#nvcore
 add_subdirectory(deps/nvcore build-nvcore)
+
+#asio
+# Add ASIO as a standalone library
+add_library(asio INTERFACE)
+target_compile_definitions(asio INTERFACE ASIO_STANDALONE)
+target_include_directories(asio INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/deps/asio/asio/include)
 
 add_library(${PROJECT_NAME} ${SOURCES})
 target_link_libraries(${PROJECT_NAME} 
     PUBLIC 
         nvcore
+        asio
 )
 target_include_directories("${PROJECT_NAME}"
     PUBLIC
