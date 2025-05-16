@@ -1,0 +1,81 @@
+server_primary:
+  enable: true
+  type: PRIMARY
+  mqtt_versions: MQTT_5_0
+  port: 8883
+  worker: 8
+  host: "0.0.0.0"
+  tls:
+    enable: true
+    type: SERVER_TLS
+    tls_cert_file: "/etc/ssl/cert.pem"
+    tls_key_file: "/etc/ssl/key.pem"
+
+server_secondary:
+  enable: false
+  type: SECONDARY
+  port: 8884
+  tls:
+    enable: false
+    type: NONE
+
+auth_config:
+  enable: false
+  auth_client_id: true
+  auth_username_password: false
+
+vmbox:
+  ipc_type: VMBOX_IPC
+  ipc_connection_type: VMBOX_DIRECT
+  port: 1885
+  worker: 8
+  mailbox_connect_timeout: 10
+  mailbox_query_timeout: 5
+  enable_backpressure_control: true
+  ingress_backlog_number: 50
+  ingress_backlog_cooldown: 200
+  egress_backlog_number: 40
+  egress_backlog_cooldown: 300
+  max_mailbox: 1000
+  host: "localhost"
+
+payload_limit:
+  max_publish_bytes: 4194304      # Max MQTT payload size (4 MB)
+  ipc_chunk_bytes: 65536          # Max IPC chunk size (64 KB)
+
+topics:
+  - topic_id: "/sensor/data"
+    max_client: 100
+    pacing: 100
+    enable: true
+
+topic_limiters:
+  - topic_filter: "/sensor/#"
+    pub_pacing: 50
+    sub_pacing: 60
+
+storm_guard:
+  enable: true
+  modules:
+    - module_id: "reconnect_storm"
+      enable: true
+      properties:
+        client_reconnect_cooldown_ms: 3000
+        session_resurrect_ttl_ms: 5000
+        ip_max_sessions: 50
+    - module_id: "auth_backoff"
+      enable: true
+      properties:
+        max_failures: 5
+        window_ms: 10000
+        penalty_ms: 10000
+    - module_id: "global_surge"
+      enable: true
+      properties:
+        max_connects: 200
+        window_ms: 5000
+        cooldown_ms: 5000
+    - module_id: "session_resurrection_guard"
+      enable: true
+      properties:
+        session_resurrect_ttl_ms: 5000

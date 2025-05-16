@@ -1,0 +1,17 @@
+server_primary:
+  enable: true
+  type: PRIMARY
+  mqtt_versions: MQTT_5_0
+  port: 1883
+  worker: 2
+  host: "127.0.0.1"
+  tls:
+    enable: false
+    type: NONE
+
+server_secondary:
+  enable: false
+
+vmbox:
+  ipc_type: VMBOX_IPC
+  ipc_connection_type: DIRECT

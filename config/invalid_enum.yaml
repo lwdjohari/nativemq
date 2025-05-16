@@ -1,0 +1,11 @@
+server_primary:
+  enable: true
+  type: PRIMARY_BROKEN       # Invalid value
+  mqtt_versions: MQTT_5_0
+
+server_secondary:
+  enable: false
+
+vmbox:
+  ipc_type: VMBOX_IPC
+  ipc_connection_type: DIRECT

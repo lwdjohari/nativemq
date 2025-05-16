@@ -1,0 +1,12 @@
+server_primary:
+  enable: "yes"           # Should be boolean
+  type: PRIMARY
+  mqtt_versions: MQTT_5_0
+  port: "eighty"          # Should be number
+
+server_secondary:
+  enable: false
+
+vmbox:
+  ipc_type: VMBOX_IPC
+  ipc_connection_type: DIRECT

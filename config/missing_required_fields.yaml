@@ -1,0 +1,8 @@
+server_primary:
+  enable: true
+
+server_secondary:
+  enable: false
+
+vmbox:
+  ipc_connection_type: DIRECT   # ipc_type is missing
