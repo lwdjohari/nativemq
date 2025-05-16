@@ -5,6 +5,13 @@ Open source MQTT 5 Server build using modern C++17.
 > [!WARNING]
 Status : WIP, Experimental & Unstable.  
 
+## Dependencies
+- Boost 1.88 (Header only,sparse)
+- Abseil LTS May 2025 (20250512.0)
+- NNG IPC
+- cli11
+- yaml-cpp
+
 ## Contributions
 
 Currently we are still on-going roadmap design and architectural design that might be lead to complete rewrite or complete breaking changes.
