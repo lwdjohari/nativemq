@@ -4,3 +4,6 @@
 [submodule "deps/nvlog"]
 	path = deps/nvlog
 	url = https://github.com/lwdjohari/nvlog.git
+[submodule "deps/abseil"]
+	path = deps/abseil
+	url = https://github.com/abseil/abseil-cpp.git
