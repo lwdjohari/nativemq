@@ -4,3 +4,6 @@
 [submodule "deps/asio"]
 	path = deps/asio
 	url = https://github.com/chriskohlhoff/asio.git
+[submodule "deps/nvlog"]
+	path = deps/nvlog
+	url = https://github.com/lwdjohari/nvlog.git
