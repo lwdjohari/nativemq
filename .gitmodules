@@ -10,3 +10,6 @@
 [submodule "deps/yaml-cpp"]
 	path = deps/yaml-cpp
 	url = https://github.com/jbeder/yaml-cpp.git
+[submodule "deps/cli11"]
+	path = deps/cli11
+	url = https://github.com/CLIUtils/CLI11.git
