@@ -17,6 +17,9 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 #     ${CMAKE_CURRENT_SOURCE_DIR}/src/nativemq/*.s
 # )
 
+#simdutf
+add_subdirectory(deps/simdutf build-simdutf)
+
 #cli11
 add_subdirectory(deps/cli11 build-cli11)
 
@@ -38,6 +41,7 @@ add_subdirectory(deps/nvcore build-nvcore)
 # Manually defined sources
 set(SOURCES
   src/nativemq/global_macro.h
+  src/nativemq/codec/mqtt_utf8_codec.h
   src/nativemq/declare.h
   src/nativemq/utils/yaml/yaml_helper.h
   src/nativemq/config/config_def.h
@@ -55,6 +59,7 @@ add_library(nativemq ${SOURCES})
 target_link_libraries(nativemq 
     PUBLIC 
         # ${CMAKE_CURRENT_SOURCE_DIR}/deps/boost
+        simdutf
         yaml-cpp
 )
 
